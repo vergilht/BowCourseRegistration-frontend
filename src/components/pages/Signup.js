@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../css/signup.css";
 
 export const Signup = () => {
-  const [users, setUsers] = useState({
+  /*   const [users, setUsers] = useState({
     email: "",
     id: "",
     fname: "",
@@ -23,11 +23,12 @@ export const Signup = () => {
     setUserarray([...userarr, { email, id, fname, lname, password }]);
     setSend(true);
     console.log(users);
-  };
+  }; */
 
   return (
     <>
-      <h1>Signup form</h1>
+      signup
+      {/* <h1>Signup form</h1>
       <form onSubmit={handleSubmit}>
         <div className="signup-form">
           <div>Email :</div>
@@ -76,9 +77,11 @@ export const Signup = () => {
             placeholder="Enter your password"
           />
           <p name="message"></p>
-          <button type="submit">Signup</button>
+          <link>
+            <button type="submit">Signup</button>
+          </link>
         </div>
-      </form>
+      </form> */}
     </>
   );
 };

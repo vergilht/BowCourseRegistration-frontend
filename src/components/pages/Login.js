@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Routes, Route, Navigate, Link, useNavigate } from "react-router-dom";
+import { Signup } from "./Signup";
 
 export const Login = () => {
   const [selectedRole, setSelectedRole] = useState(null);
@@ -13,6 +15,8 @@ export const Login = () => {
 
   const [send, setSend] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+
   const handleCheck = (e) => {
     const checkbox = e.target.name;
 
@@ -39,18 +43,23 @@ export const Login = () => {
     }
     setSend(true);
     console.log(user);
-    CheckEmailPW();
   };
 
-  const CheckEmailPW = () => {};
-  const checkEmail = users.find((u) => u.email === user.email);
+  const CheckEmailPW = () => {
+    const checkEmail = users.find((u) => u.email === user.email);
 
-  if (checkEmail && checkEmail.password === user.password) {
-    console.log("login success");
-  } else {
-    console.log("wrong pw");
-  }
+    if (checkEmail && checkEmail.password === user.password) {
+      console.log("login success");
+    } else {
+      console.log("login fail");
+      navigate("/");
+    }
+  };
 
+  const handleButtonClick = () => {
+    console.log("Checking user");
+    CheckEmailPW();
+  };
   return (
     <>
       <h1>Login</h1>
@@ -94,7 +103,17 @@ export const Login = () => {
             placeholder="Enter your password"
           />
           <p name="message"></p>
-          <button type="submit">Login</button>
+
+          {/* <Link to="/admin">
+            <button onClick={handleButtonClick} type="submit">Login</button>
+          </Link> */}
+
+          <button onClick={handleButtonClick} type="submit">
+            <Link to="/admin">Login</Link>
+          </button>
+          <button>
+            <Link to="/signup">Signup</Link>
+          </button>
         </div>
       </form>
     </>

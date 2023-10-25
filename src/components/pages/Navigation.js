@@ -19,9 +19,7 @@ export const Navigation = () => {
           <li className="nav_list">
             <Link to="/">Home</Link>
           </li>
-          <li className="nav_list">
-            <Link to="/login">Login</Link>
-          </li>
+
           <li className="nav_list">
             <Link to="/signup">Signup</Link>
           </li>
