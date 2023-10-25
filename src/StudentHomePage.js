@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import CourseSearch from './components/CourseSearch';
 import StudentSignup from './components/StudentSignup';
-import CourseSelection from "./components/CourseSelection";
 import './components/StudentHomePage.css';
 
 const StudentHomePage = () => {
+    const [isSignedUp, setIsSignedUp] = useState(false);
+
     return (
         <div>
-            <h1>Bow Course Registration System</h1>
-            <p>Welcome to the Bow Course Registration System.</p>
+            <h1>Bow Valley Course Registration System</h1>
+            {/* Display the Bow Valley logo */}
+            <img src="/path/to/bow-valley-logo.png" alt="Bow Valley Logo" className="logo" />
+
+            <p>Welcome to the Bow Valley Course Registration System.</p>
 
             <div className="student-actions">
                 <h2>For Students</h2>
@@ -16,12 +20,18 @@ const StudentHomePage = () => {
                     <li>
                         <a href="/courses">Search Available Courses</a>
                     </li>
-                    <li>
-                        <a href="/register">Sign Up for Programs and Courses</a>
-                    </li>
-                    <li>
-                        <a href="/program">Selecting your Program, Term and Courses here</a>
-                    </li>
+                    {/* Show a message and the sign-up button only if the student is not signed up */}
+                    {!isSignedUp && (
+                        <li>
+                            Please sign up before selecting Programs, Terms, and Courses.
+                            <button onClick={() => {
+                                // Mark the student as signed up
+                                setIsSignedUp(true);
+                            }}>
+                                Sign Up
+                            </button>
+                        </li>
+                    )}
                 </ul>
             </div>
 
@@ -29,13 +39,10 @@ const StudentHomePage = () => {
             <CourseSearch />
 
             {/* Display the StudentSignup component for student registration */}
-            <StudentSignup />
-
-            {/* Display the CourseSelection component for selecting programs and terms */}
-            <CourseSelection />
-
+            {!isSignedUp && <StudentSignup />}
         </div>
     );
 };
 
 export default StudentHomePage;
+
