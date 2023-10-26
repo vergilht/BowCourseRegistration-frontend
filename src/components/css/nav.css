@@ -1,0 +1,15 @@
+.nav_wrap {
+  background-color: black;
+}
+.nav_container {
+  width: 50%;
+  margin: auto;
+  background-color: bisque;
+  text-align: center;
+}
+.nav_list {
+  display: inline-block;
+  margin: 5px;
+  padding: 5px;
+  font-size: large;
+}
