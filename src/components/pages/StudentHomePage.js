@@ -1,53 +1,42 @@
-import React, { useState } from "react";
-import CourseSearch from "../CourseSearch";
-import StudentSignup from "../StudentSignup";
-/* import "../css/StudentHomePage.css"; */
+import React, { useState } from 'react';
+import CourseSearch from '../CourseSearch';
+import StudentSignup from '../StudentSignup';
+import '../css/StudentHomePage.css';
 
 const StudentHomePage = () => {
-  const [isSignedUp, setIsSignedUp] = useState(false);
+    const [isSignedUp, setIsSignedUp] = useState(false);
 
-  return (
-    <div>
-      <h1>Bow Valley Course Registration System</h1>
-      {/* Display the Bow Valley logo */}
-      <img
-        src="/path/to/bow-valley-logo.png"
-        alt="Bow Valley Logo"
-        className="logo"
-      />
+    return (
+        <div>
 
-      <p>Welcome to the Bow Valley Course Registration System.</p>
+            <div className="logo">
+                <img src="/BowValleylogo.png" alt="Bow Valley Logo" />
+            </div>
 
-      <div className="student-actions">
-        <h2>For Students</h2>
-        <ul>
-          <li>
-            <a href="/courses">Search Available Courses</a>
-          </li>
-          {/* Show a message and the sign-up button only if the student is not signed up */}
-          {!isSignedUp && (
-            <li>
-              Please sign up before selecting Programs, Terms, and Courses.
-              <button
-                onClick={() => {
-                  // Mark the student as signed up
-                  setIsSignedUp(true);
-                }}
-              >
-                Sign Up
-              </button>
-            </li>
-          )}
-        </ul>
-      </div>
+            <div className="banner">
+                <img src="/MegaBanner.jpg" alt="Bow Valley Banner" />
+            </div>
 
-      {/* Display the CourseSearch component for selecting courses */}
-      <CourseSearch />
+            <div className="banner-text">
+                <h1>Your journey begins today!</h1>
+                <p>Explore Your Courses Selection</p>
+            </div>
 
-      {/* Display the StudentSignup component for student registration */}
-      {!isSignedUp && <StudentSignup />}
-    </div>
-  );
+            {/* Search box for Course Search component */}
+            <div className="search-box">
+                <CourseSearch />
+            </div>
+
+            {/* Student signup component */}
+            {!isSignedUp && (
+                <div className="student-signup">
+                    <StudentSignup />
+                </div>
+            )}
+        </div>
+    );
 };
-
 export default StudentHomePage;
+
+
+
