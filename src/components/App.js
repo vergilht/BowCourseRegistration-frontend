@@ -7,13 +7,17 @@ import StudentHomePage from "./pages/StudentHomePage";
 import { AddCourse, SearchCourse } from "./pages/AdminCourse";
 import { AdminStudent } from "./pages/AdminStudent";
 import { AdminForm } from "./pages/AdminForm";
+import Welcome from "./pages/Welcome";
+import { AdminLogin, StudLogin, Login } from "./pages/Login";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Welcome />} />
         <Route path="admin" element={<Admin />} />
+        <Route path="admin/login" element={<Login />} />
+        <Route path="student/login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route path="/student-home" element={<StudentHomePage />} />
         {/* <Route path="admin/addcourse" element={<AddCourse />} /> */}
