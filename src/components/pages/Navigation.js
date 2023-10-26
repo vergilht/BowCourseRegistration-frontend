@@ -47,7 +47,7 @@ export const AdminNavigation = () => {
       <nav className="nav_wrap">
         <ul className="nav_container">
           <li className="nav_list">
-            <Link to="/admin/addcourse">Add Course</Link>
+            <Link to="/admin">Add Course</Link>
           </li>
           <li className="nav_list">
             <Link to="/admin/searchcourse">Search Course</Link>
