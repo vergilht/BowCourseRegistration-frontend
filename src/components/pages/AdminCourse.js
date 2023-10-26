@@ -12,14 +12,11 @@ export const AddCourse = () => {
 
   const [courses, setCourses] = useState([]);
 
-  /* Add courses */
-  {
-    /* 
+  /* 
       - Add course details : code, name, starting date, end date, information
       - Delete course details : code, name, starting date, end date, information
       - Search with name, code
       */
-  }
 
   const [send, setSend] = useState(false);
 
@@ -42,7 +39,6 @@ export const AddCourse = () => {
 
   return (
     <>
-      <AdminNavigation />
       <form onSubmit={handleSubmit}>
         <div className="add-course-form">
           <div>
@@ -107,10 +103,5 @@ export const AddCourse = () => {
   );
 };
 export const SearchCourse = () => {
-  return (
-    <>
-      <AdminNavigation />
-      Search Course
-    </>
-  );
+  return <>Search Course</>;
 };
