@@ -5,18 +5,12 @@ export const AddCourse = () => {
   const [course, setCourse] = useState({
     courseCode: "",
     courseName: "",
-    term: "",
+    term: "term1",
     fee: "",
     description: "",
   });
 
   const [courses, setCourses] = useState([]);
-
-  /* 
-      - Add course details : code, name, starting date, end date, information
-      - Delete course details : code, name, starting date, end date, information
-      - Search with name, code
-      */
 
   const [send, setSend] = useState(false);
 
@@ -24,17 +18,20 @@ export const AddCourse = () => {
     const name = e.target.name;
     const value = e.target.value;
     setCourse({ ...course, [name]: value });
-    console.log("handleChange");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setCourses([...courses, course]);
 
-    setCourses({ ...courses, course });
+    setCourse({
+      courseCode: "",
+      courseName: "",
+      term: "",
+      fee: "",
+      description: "",
+    });
     setSend(true);
-    console.log(course);
-    console.log(courses);
-    console.log("handleSubmit");
   };
 
   return (
