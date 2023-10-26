@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CourseSearch from "../CourseSearch";
 import StudentSignup from "../StudentSignup";
-import "../css/StudentHomePage.css";
+/* import "../css/StudentHomePage.css"; */
 
 const StudentHomePage = () => {
   const [isSignedUp, setIsSignedUp] = useState(false);

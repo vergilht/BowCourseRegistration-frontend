@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
-import { Login } from "./pages/Login";
+import { Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Admin } from "./pages/Admin";
-import { Navigation } from "./pages/Navigation";
 import { Signup } from "./pages/Signup";
+import StudentHomePage from "./pages/StudentHomePage";
 
 function App() {
   return (
@@ -13,6 +12,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="admin" element={<Admin />} />
         <Route path="signup" element={<Signup />} />
+        <Route path="/student-home" element={<StudentHomePage />} />
       </Routes>
     </>
   );
