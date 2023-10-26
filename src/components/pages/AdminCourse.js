@@ -1,7 +1,25 @@
 import React, { useState } from "react";
 import { AdminNavigation } from "./Navigation";
 
-export const AddCourse = () => {
+/* export const CourseManagement = () => {
+  const [courses, setCourses] = useState([]);
+
+  // Define a function to update the courses state
+  const addCourse = (newCourse) => {
+    console.log("Course Management");
+    setCourses([...courses, newCourse]);
+  };
+
+  return (
+    <div>
+      <AdminNavigation />
+      <AddCourse addCourse={setCourses} courses={courses} />
+      <SearchCourse courses={courses} />
+    </div>
+  );
+}; */
+
+export const AddCourse = (props) => {
   const [course, setCourse] = useState({
     courseCode: "",
     courseName: "",
@@ -9,8 +27,6 @@ export const AddCourse = () => {
     fee: "",
     description: "",
   });
-
-  const [courses, setCourses] = useState([]);
 
   const [send, setSend] = useState(false);
 
@@ -22,8 +38,7 @@ export const AddCourse = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCourses([...courses, course]);
-
+    props.addCourse(course);
     setCourse({
       courseCode: "",
       courseName: "",
@@ -96,9 +111,10 @@ export const AddCourse = () => {
         </div>
         <button type="submit">Add Course</button>
       </form>
+      <div>{props.courses}</div>
     </>
   );
 };
-export const SearchCourse = () => {
+export const SearchCourse = (courses) => {
   return <>Search Course</>;
 };
