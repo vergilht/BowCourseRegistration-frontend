@@ -1,10 +1,6 @@
-.nav_wrap {
-  background-color: black;
-}
 .nav_container {
   width: 50%;
   margin: auto;
-  background-color: bisque;
   text-align: center;
 }
 .nav_list {

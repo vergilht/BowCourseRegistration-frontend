@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Home } from "./pages/Home";
 import { Admin } from "./pages/Admin";
 import { Signup } from "./pages/Signup";
 import StudentHomePage from "./pages/StudentHomePage";
