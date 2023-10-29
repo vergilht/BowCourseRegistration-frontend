@@ -115,6 +115,32 @@ export const AddCourse = (props) => {
     </>
   );
 };
-export const SearchCourse = (courses) => {
-  return <>Search Course</>;
+export const SearchCourse = (props) => {
+  //const allCourses = props.courses;
+  const results = props.courses;
+
+  const handleSearch = () => {
+    console.log("handleSearch");
+    console.log(results);
+  };
+
+  return (
+    <>
+      <h2>Search for Courses</h2>
+      <input type="text" placeholder="Course name or course ID" />
+      <button onClick={handleSearch}>Search</button>
+
+      <div>
+        <h4>Search Results</h4>
+        <ul>
+          {/*             {results.map((result) => (
+              <li key={result.course}>
+                {result.course} is available in {result.term} from{" "}
+                {result.startingDate} to {result.endingDate}
+              </li>
+            ))} */}
+        </ul>
+      </div>
+    </>
+  );
 };
