@@ -119,6 +119,7 @@ export const SearchCourse = (props) => {
   const [searchValue, setSearchValue] = useState();
   const [searchResults, setSearchResults] = useState([]);
   const courseDB = props.courses;
+  const setCourses = props.setCourses;
 
   const handleSearch = () => {
     setSearchResults([]);
@@ -142,6 +143,13 @@ export const SearchCourse = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(searchValue);
+  };
+
+  const handleDeleteCourse = (courseCode) => {
+    const updatedCourses = courseDB.filter(
+      (course) => course.courseCode !== courseCode
+    );
+    setCourses(updatedCourses);
   };
 
   return (
@@ -169,6 +177,9 @@ export const SearchCourse = (props) => {
                   <p>Course Term: {result.term}</p>
                   <p>Course Fee: {result.fee}</p>
                   <p>Course Description{result.description}</p>
+                  <button onClick={() => handleDeleteCourse(result.courseCode)}>
+                    DELETE
+                  </button>
                 </li>
               ))}
             </ul>

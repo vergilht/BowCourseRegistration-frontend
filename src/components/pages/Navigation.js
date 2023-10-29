@@ -51,9 +51,6 @@ export const AdminNavigation = () => {
             <Link to="/admin">Add Course</Link>
           </li>
           <li className="nav_list">
-            <Link to="/admin/searchcourse">Search Course</Link>
-          </li>
-          <li className="nav_list">
             <Link to="/admin/students">Students</Link>
           </li>
           <li className="nav_list">

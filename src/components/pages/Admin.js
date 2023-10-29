@@ -63,7 +63,7 @@ export const Admin = () => {
     <div>
       <AdminNavigation />
       <AddCourse addCourse={addCourse} />
-      <SearchCourse courses={courses} />
+      <SearchCourse courses={courses} setCourses={setCourses} />
     </div>
   );
 };
