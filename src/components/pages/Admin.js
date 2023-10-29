@@ -2,22 +2,6 @@ import React, { useState } from "react";
 import { AdminNavigation } from "./Navigation";
 import { AddCourse, SearchCourse } from "./AdminCourse";
 
-/* export const Admin2 = () => {
-  const [courses, setCourses] = useState([]);
-
-  const addCourse = (course) => {
-    setCourses([...courses, course]);
-  };
-
-  return (
-    <>
-      <AdminNavigation />
-      <AddCourse addCourse={addCourse} />
-      <SearchCourse courses={courses} />
-    </>
-  );
-};
- */
 export const Admin = () => {
   /* Mock date for search function */
   const [courses, setCourses] = useState([

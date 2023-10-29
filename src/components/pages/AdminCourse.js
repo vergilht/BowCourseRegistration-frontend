@@ -1,24 +1,6 @@
 import React, { useState } from "react";
 import { AdminNavigation } from "./Navigation";
 
-/* export const CourseManagement = () => {
-  const [courses, setCourses] = useState([]);
-
-  // Define a function to update the courses state
-  const addCourse = (newCourse) => {
-    console.log("Course Management");
-    setCourses([...courses, newCourse]);
-  };
-
-  return (
-    <div>
-      <AdminNavigation />
-      <AddCourse addCourse={setCourses} courses={courses} />
-      <SearchCourse courses={courses} />
-    </div>
-  );
-}; */
-
 export const AddCourse = (props) => {
   const [course, setCourse] = useState({
     courseCode: "",
