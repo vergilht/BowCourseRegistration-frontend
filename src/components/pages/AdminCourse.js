@@ -1,22 +1,14 @@
 import React, { useState } from "react";
 import { AdminNavigation } from "./Navigation";
 
-export const AddCourse = () => {
+export const AddCourse = (props) => {
   const [course, setCourse] = useState({
     courseCode: "",
     courseName: "",
-    term: "",
+    term: "term1",
     fee: "",
     description: "",
   });
-
-  const [courses, setCourses] = useState([]);
-
-  /* 
-      - Add course details : code, name, starting date, end date, information
-      - Delete course details : code, name, starting date, end date, information
-      - Search with name, code
-      */
 
   const [send, setSend] = useState(false);
 
@@ -24,17 +16,19 @@ export const AddCourse = () => {
     const name = e.target.name;
     const value = e.target.value;
     setCourse({ ...course, [name]: value });
-    console.log("handleChange");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    setCourses({ ...courses, course });
+    props.addCourse(course);
+    setCourse({
+      courseCode: "",
+      courseName: "",
+      term: "",
+      fee: "",
+      description: "",
+    });
     setSend(true);
-    console.log(course);
-    console.log(courses);
-    console.log("handleSubmit");
   };
 
   return (
@@ -99,9 +93,84 @@ export const AddCourse = () => {
         </div>
         <button type="submit">Add Course</button>
       </form>
+      <div>{props.courses}</div>
     </>
   );
 };
-export const SearchCourse = () => {
-  return <>Search Course</>;
+export const SearchCourse = (props) => {
+  const [searchValue, setSearchValue] = useState();
+  const [searchResults, setSearchResults] = useState([]);
+  const courseDB = props.courses;
+  const setCourses = props.setCourses;
+
+  const handleSearch = () => {
+    setSearchResults([]);
+    const results = [];
+    console.log("handleSearch");
+    console.log(courseDB);
+
+    for (const course of courseDB) {
+      if (
+        course.courseCode.toLowerCase().includes(searchValue) ||
+        course.courseName.toLowerCase().includes(searchValue)
+      ) {
+        console.log("1", course);
+        results.push(course);
+      }
+    }
+    setSearchResults(results);
+    console.log("result", results);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(searchValue);
+  };
+
+  const handleDeleteCourse = (courseCode) => {
+    const updatedCourses = courseDB.filter(
+      (course) => course.courseCode !== courseCode
+    );
+    setCourses(updatedCourses);
+  };
+
+  return (
+    <>
+      <h2>Search for Courses</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          onChange={(e) => setSearchValue(e.target.value.toLowerCase())}
+          placeholder="Course name or course ID"
+        />
+        <button onClick={handleSearch} type="submit">
+          Search
+        </button>
+      </form>
+      <div>
+        <h4>Search Results</h4>
+        <div>
+          {searchResults.length > 0 ? (
+            <ul>
+              {searchResults.map((result) => (
+                <li key={result.courseCode}>
+                  <p>Course Code: {result.courseCode}</p>
+                  <p>Course Name: {result.courseName}</p>
+                  <p>Course Term: {result.term}</p>
+                  <p>Course Fee: {result.fee}</p>
+                  <p>Course Description{result.description}</p>
+                  <button onClick={() => handleDeleteCourse(result.courseCode)}>
+                    DELETE
+                  </button>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No matching courses found.</p>
+          )}
+        </div>
+        <ul></ul>
+      </div>
+    </>
+  );
 };

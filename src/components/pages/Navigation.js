@@ -6,8 +6,7 @@ export const HomeNavigation = () => {
       <div>
         <h1
           style={{
-            color: "white",
-            backgroundColor: "black",
+            color: "black",
             textAlign: "center",
           }}
         >
@@ -33,11 +32,13 @@ export const HomeNavigation = () => {
 export const AdminNavigation = () => {
   return (
     <>
+      <div className="logo">
+        <img src="/BowValleylogo.png" alt="Bow Valley Logo" />
+      </div>
       <div>
         <h1
           style={{
-            color: "white",
-            backgroundColor: "black",
+            color: "black",
             textAlign: "center",
           }}
         >
@@ -48,9 +49,6 @@ export const AdminNavigation = () => {
         <ul className="nav_container">
           <li className="nav_list">
             <Link to="/admin">Add Course</Link>
-          </li>
-          <li className="nav_list">
-            <Link to="/admin/searchcourse">Search Course</Link>
           </li>
           <li className="nav_list">
             <Link to="/admin/students">Students</Link>

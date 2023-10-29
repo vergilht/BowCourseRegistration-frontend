@@ -1,0 +1,34 @@
+/* Add this to your CSS stylesheet */
+/* .container {
+  position: relative;
+  width: 100%;
+} */
+.container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* This centers the form vertically */
+}
+.banner {
+  width: 100%;
+  height: auto;
+}
+
+.login-form-container {
+  /* position: relative; */
+  top: 10;
+  left: 0;
+  width: 400px;
+  background: rgba(
+    255,
+    255,
+    255,
+    0.55
+  ); /* Adjust background color and opacity as needed */
+  padding: 20px;
+
+  box-sizing: border-box;
+  z-index: 1; /* This ensures the form is on top of the banner */
+}

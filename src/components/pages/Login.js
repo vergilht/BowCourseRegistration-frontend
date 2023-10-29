@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "../css/login.css";
 
 export const Login = () => {
   const [user, setUser] = useState({
@@ -59,40 +60,47 @@ export const Login = () => {
 
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="login-form">
-          <div>Email :</div>
-          <input
-            type="text"
-            id=""
-            value={user.email}
-            name="email"
-            onChange={handleChange}
-            placeholder="Enter your email"
-          />
-
-          <div>Password :</div>
-          <input
-            type="text"
-            id=""
-            value={user.password}
-            name="password"
-            onChange={handleChange}
-            placeholder="Enter your password"
-          />
-          <p name="message"></p>
-
-          <button onClick={CheckEmailPW} type="submit">
-            Login
-          </button>
-          {window.location.href.split("/")[3] !== "admin" && (
-            <button>
-              <Link to="/signup">Signup</Link>
-            </button>
-          )}
+      <div className="container">
+        <div className="banner">
+          <img src="/WelcomeBanner.jpg" alt="Bow Valley Banner" />
         </div>
-      </form>
+        <div className="login-form-container">
+          <h1>Login</h1>
+          <form onSubmit={handleSubmit}>
+            <div className="login-form">
+              <div>Email :</div>
+              <input
+                type="text"
+                id=""
+                value={user.email}
+                name="email"
+                onChange={handleChange}
+                placeholder="Enter your email"
+              />
+
+              <div>Password :</div>
+              <input
+                type="text"
+                id=""
+                value={user.password}
+                name="password"
+                onChange={handleChange}
+                placeholder="Enter your password"
+              />
+              <p name="message"></p>
+
+              <button onClick={CheckEmailPW} type="submit">
+                Login
+              </button>
+              {window.location.href.split("/")[3] !== "admin" && (
+                <button>
+                  <Link to="/signup">Signup</Link>
+                </button>
+              )}
+            </div>
+          </form>
+        </div>
+      </div>
     </>
   );
 };
