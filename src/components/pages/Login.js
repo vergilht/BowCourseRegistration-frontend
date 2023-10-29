@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/login.css";
+import { users } from "./user-data";
 
 export const Login = () => {
   const [user, setUser] = useState({
@@ -10,10 +11,10 @@ export const Login = () => {
   });
   let { email, password, role } = user;
 
-  const users = [
+  /*   const users = [
     { email: "admin@email.com", password: "password1", role: "admin" },
     { email: "student@email.com", password: "password1", role: "student" },
-  ];
+  ]; */
 
   const [send, setSend] = useState(false);
   const navigate = useNavigate();
