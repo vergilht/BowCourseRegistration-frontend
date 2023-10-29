@@ -116,30 +116,67 @@ export const AddCourse = (props) => {
   );
 };
 export const SearchCourse = (props) => {
-  //const allCourses = props.courses;
-  const results = props.courses;
+  const [searchValue, setSearchValue] = useState();
+  const [searchResults, setSearchResults] = useState([]);
+  const courseDB = props.courses;
 
   const handleSearch = () => {
+    setSearchResults([]);
+    const results = [];
     console.log("handleSearch");
-    console.log(results);
+    console.log(courseDB);
+
+    for (const course of courseDB) {
+      if (
+        course.courseCode.toLowerCase().includes(searchValue) ||
+        course.courseName.toLowerCase().includes(searchValue)
+      ) {
+        console.log("1", course);
+        results.push(course);
+      }
+    }
+    setSearchResults(results);
+    console.log("result", results);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(searchValue);
   };
 
   return (
     <>
       <h2>Search for Courses</h2>
-      <input type="text" placeholder="Course name or course ID" />
-      <button onClick={handleSearch}>Search</button>
-
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          onChange={(e) => setSearchValue(e.target.value.toLowerCase())}
+          placeholder="Course name or course ID"
+        />
+        <button onClick={handleSearch} type="submit">
+          Search
+        </button>
+      </form>
       <div>
         <h4>Search Results</h4>
-        <ul>
-          {/*             {results.map((result) => (
-              <li key={result.course}>
-                {result.course} is available in {result.term} from{" "}
-                {result.startingDate} to {result.endingDate}
-              </li>
-            ))} */}
-        </ul>
+        <div>
+          {searchResults.length > 0 ? (
+            <ul>
+              {searchResults.map((result) => (
+                <li key={result.courseCode}>
+                  <p>Course Code: {result.courseCode}</p>
+                  <p>Course Name: {result.courseName}</p>
+                  <p>Course Term: {result.term}</p>
+                  <p>Course Fee: {result.fee}</p>
+                  <p>Course Description{result.description}</p>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p>No matching courses found.</p>
+          )}
+        </div>
+        <ul></ul>
       </div>
     </>
   );
