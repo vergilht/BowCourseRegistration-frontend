@@ -12,8 +12,7 @@ export const Support = () => {
         event.preventDefault();
 
         const submittedData = {
-            firstName,
-            lastName,
+            Name,
             phoneNumber,
             email,
             comments,
