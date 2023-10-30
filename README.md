@@ -3,31 +3,32 @@
 Welcome to the Bow Course Registration Fullstack Web Application! This README.md will provide you with an overview of the project's directory structure and its website functionality.
 
 ## Directory Structure
+
 |-- src
-| |-- components
-| | |-- AdminCourse.js
-| | |-- CourseSearch.js
-| | |-- StudentSignup.js
-| | |-- user-data.js
-| | |-- Navigation.js
-| |-- css
-| | |-- admin.css
-| | |-- contact.css
-| | |-- CourseSelection.css
-| | |-- login.css
-| | |-- nav.css
-| | |-- StudentHomePage.css
-| | |-- Welcome.css
-| |-- pages
-| | |-- Admin.js
-| | |-- Contact.js
-| | |-- Login.js
-| | |-- StudentHomePage.js
-| | |-- Welcome.js
-| | |-- CourseSelection.js
+|   |-- components
+|   |   |-- AdminCourse.js
+|   |   |-- CourseSearch.js
+|   |   |-- StudentSignup.js
+|   |   |-- User-data.js
+|   |-- css
+|   |   |-- admin.css
+|   |   |-- contact.css
+|   |   |-- CourseSelection.css
+|   |   |-- login.css
+|   |   |-- nav.css
+|   |   |-- StudentHomePage.css
+|   |   |-- Welcome.css
+|   |-- pages
+|   |   |-- Admin.js
+|   |   |-- Contact.js
+|   |   |-- Login.js
+|   |   |-- StudentHomePage.js
+|   |   |-- Welcome.js
+|   |   |-- CourseSelection.js
 |-- public
-| |-- index.html
+|   |-- index.html
 |-- README.md
+
 
 
 ## Website Functionality
