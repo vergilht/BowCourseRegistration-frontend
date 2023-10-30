@@ -10,7 +10,7 @@ Welcome to the Bow Course Registration Fullstack Web Application! This README.md
 | | |-- AdminCourse.js
 | | |-- CourseSearch.js
 | | |-- StudentSignup.js
-| | |-- User-data.js
+| | |-- user-data.js
 |-- css
 | | |-- admin.css
 | | |-- contact.css
