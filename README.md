@@ -63,15 +63,27 @@ Welcome to the Bow Course Registration Fullstack Web Application! This README.md
 ### Contact Us (Contact.js)
 - Allows users to send questions and comments to the admin staff.
 
-### Dependencies
+## How to Use
+
+1. Clone this GitHub repository to your local machine.
+2. Install the necessary dependencies.
+   npm install
+3. Start the development server.
+   npm start
+4. Access the web application in your web browser by visiting http://localhost:3000.    
+
+## Dependencies
+
 React
 React Router
 Other necessary packages (installed via npm install)
 
-### Contributing
+## Contributing
+
 Feel free to contribute to this project by opening issues, proposing new features, or submitting pull requests. We welcome your feedback and collaboration to improve the Bow Course Registration Web Application.
 
-### Contact
+## Contact
+
 If you have any questions or need assistance, you can contact the project administrators through the "Contact Us" page or by reaching out to the email provided in the website.
 
 Happy learning and course registration with Bow Course Registration Fullstack Web Application!
