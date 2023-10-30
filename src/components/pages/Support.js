@@ -19,7 +19,7 @@ export const Support = () => {
             comments,
         };
         
-        alert(`We will answer your questions shortly, ${submittedData.firstName} ${submittedData.lastName}. We will contact you at ${submittedData.phoneNumber}.`);
+        alert(`We will answer your questions shortly, ${submittedData.Name}. We will contact you at ${submittedData.phoneNumber}.`);
 
         // Reset the form
         setFirstName('');
@@ -33,11 +33,8 @@ export const Support = () => {
         const { id, value } = event.target;
 
         switch (id) {
-            case 'fname':
+            case 'name':
                 setFirstName(value);
-                break;
-            case 'lname':
-                setLastName(value);
                 break;
             case 'phone':
                 setPhoneNumber(value);
@@ -57,11 +54,8 @@ export const Support = () => {
         <div className="support-form">
             <h1>Contact Form</h1>
             <form onSubmit={handleSubmit}>
-                <p>First Name:</p>
-                <input type="text" id="fname" value={firstName} onChange={handleChange} />
-
-                <p>Last Name:</p>
-                <input type="text" id="lname" value={lastName} onChange={handleChange} />
+                <p>Name:</p>
+                <input type="text" id="name" value={Name} onChange={handleChange} />
 
                 <p>Phone Number:</p>
                 <input type="text" id="phone" value={phoneNumber} onChange={handleChange} />
@@ -69,7 +63,7 @@ export const Support = () => {
                 <p>Email:</p>
                 <input type="text" id="email" value={email} onChange={handleChange} />
 
-                <p>Question/Comment:</p>
+                <p>Question:</p>
                 <textarea name="comments" id="comments" value={comments} onChange={handleChange}></textarea>
 
                 <div className="submit">
