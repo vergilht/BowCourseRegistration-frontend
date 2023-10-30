@@ -4,23 +4,18 @@ export const AdminForm = () => {
   return (
     <>
       <AdminNavigation />
-      Admin Form
       <div>
-        <h1>Admin Navigation</h1>
+        <h1>Question/ Comment</h1>
 
-        <h2>Admin Form</h2>
+        <p>First Name : Jiwon </p>
 
-        <p>First Name</p>
-        <input type="text" id="fname"></input>
+        <p>Last Name : Jeon </p>
 
-        <p>Last Name</p>
-        <input type="text" id="lname"></input>
+        <p>Phone Number : 8252882443 </p>
 
-        <p>Phone Number</p>
-        <input type="text" id="phone"></input>
+        <p>Email : jjiwon24@gmail.com </p>
 
-        <p>Email</p>
-        <input type="text" id="email"></input>
+        <p>Question</p>
       </div>
     </>
   );
