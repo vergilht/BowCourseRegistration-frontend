@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import '../css/Support.css';
 
 export const Support = () => {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
+    const [Name, setName] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [comments, setComments] = useState('');
@@ -33,7 +32,7 @@ export const Support = () => {
 
         switch (id) {
             case 'name':
-                setFirstName(value);
+                setName(value);
                 break;
             case 'phone':
                 setPhoneNumber(value);
