@@ -1,0 +1,29 @@
+body {
+    font-family: Helvetica Neue, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.addCourse {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    align-content: center;
+    box-sizing: border-box;
+    font-size: 18px;
+}
+
+.searchCourse {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    align-content: center;
+    box-sizing: border-box;
+    font-size: 18px;
+}
