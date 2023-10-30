@@ -19,6 +19,10 @@ export const Contact = () => {
             comments,
         };
 
+        const queryParams = new URLSearchParams(submittedData);
+        const query = queryParams.toString();
+        window.location.href = `/admin-form?${query}`;
+        
         alert(`Thank you for your submission, ${submittedData.firstName} ${submittedData.lastName}. We will contact you at ${submittedData.phoneNumber} or ${submittedData.email} shortly.`);
 
         // Reset the form
