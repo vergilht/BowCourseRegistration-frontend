@@ -50,7 +50,7 @@ export const Support = () => {
 
     return (
         <div className="support-form">
-            <h1>Contact Form</h1>
+            <h1>Support</h1>
             <form onSubmit={handleSubmit}>
                 <p>Name:</p>
                 <input type="text" id="name" value={Name} onChange={handleChange} />
