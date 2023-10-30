@@ -17,7 +17,7 @@ export const Support = () => {
             comments,
         };
         
-        alert(`We will answer your questions shortly, ${submittedData.Name}. We will contact you at ${submittedData.phoneNumber}.`);
+        alert(`We will answer your questions shortly, ${submittedData.Name}. We will contact you at ${submittedData.phoneNumber} or ${submittedData.Email}.`);
 
         // Reset the form
         setFirstName('');
