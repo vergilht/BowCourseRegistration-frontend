@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# Bow Course Registration Fullstack Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Bow Course Registration Fullstack Web Application! This README.md will provide you with an overview of the project's directory structure and its website functionality.
 
-## Available Scripts
+## Directory Structure
+|-- src
+| |-- components
+| | |-- AdminCourse.js
+| | |-- CourseSearch.js
+| | |-- StudentSignup.js
+| | |-- user-data.js
+| | |-- Navigation.js
+| |-- css
+| | |-- admin.css
+| | |-- contact.css
+| | |-- CourseSelection.css
+| | |-- login.css
+| | |-- nav.css
+| | |-- StudentHomePage.css
+| | |-- Welcome.css
+| |-- pages
+| | |-- Admin.js
+| | |-- Contact.js
+| | |-- Login.js
+| | |-- StudentHomePage.js
+| | |-- Welcome.js
+| | |-- CourseSelection.js
+|-- public
+| |-- index.html
+|-- README.md
 
-In the project directory, you can run:
 
-### `npm start`
+## Website Functionality
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Welcome Page (Welcome.js)
+- The homepage of the application.
+- Contains two buttons: "For Students" and "For Admin"
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Student Login (Login.js)
+- Functions for registered students to sign in.
+- Functions for new students to sign up.
+- Sign in takes students to the Course Selection page (CourseSelection.js).
+- Sign up takes students to the Student Home Page (StudentHomePage.js).
 
-### `npm test`
+### Student Home Page (StudentHomePage.js)
+- Allows students to search for courses and sign up.
+- Consists of components: CourseSearch.js and StudentSignup.js.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Admin Login (Login.js)
+- Functions for admin staff to sign in.
+- After signing in, admins are directed to the Admin Page (Admin.js).
 
-### `npm run build`
+### Admin Page (Admin.js)
+- Admin home page with multiple functions:
+  - Search courses.
+  - Add courses.
+  - Delete courses.
+  - Receive questions and comments from students.
+  - Access the current student list.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Contact Us (Contact.js)
+- Allows users to send questions and comments to the admin staff.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Dependencies
+React
+React Router
+Other necessary packages (installed via npm install)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Contributing
+Feel free to contribute to this project by opening issues, proposing new features, or submitting pull requests. We welcome your feedback and collaboration to improve the Bow Course Registration Web Application.
 
-### `npm run eject`
+### Contact
+If you have any questions or need assistance, you can contact the project administrators through the "Contact Us" page or by reaching out to the email provided in the website.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Happy learning and course registration with Bow Course Registration Fullstack Web Application!
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
