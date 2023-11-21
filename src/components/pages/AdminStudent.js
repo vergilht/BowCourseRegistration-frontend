@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { AdminNavigation } from "./Navigation";
-import { users } from "./user-data";
+import { AdminNavigation } from "./Navigation.js";
+import { users } from "./user-data.js";
 
 export const AdminStudent = () => {
   const students = users.filter(

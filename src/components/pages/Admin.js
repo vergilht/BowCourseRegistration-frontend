@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { AdminNavigation } from "./Navigation";
-import { AddCourse, SearchCourse } from "./AdminCourse";
+import { AdminNavigation } from "./Navigation.js";
+import { AddCourse, SearchCourse } from "./AdminCourse.js";
 import "../css/admin.css";
 
 export const Admin = () => {
@@ -114,19 +114,18 @@ export const Admin = () => {
   console.log("db", courses);
 
   return (
-
+    <div>
       <div>
-        <div>
-          <AdminNavigation />
-        </div>
-
-        <div className="addCourse">
-          <AddCourse addCourse={addCourse} />
-        </div>
-
-        <div className="searchCourse">
-          <SearchCourse courses={courses} setCourses={setCourses} />
-        </div>
+        <AdminNavigation />
       </div>
+
+      <div className="addCourse">
+        <AddCourse addCourse={addCourse} />
+      </div>
+
+      <div className="searchCourse">
+        <SearchCourse courses={courses} setCourses={setCourses} />
+      </div>
+    </div>
   );
 };

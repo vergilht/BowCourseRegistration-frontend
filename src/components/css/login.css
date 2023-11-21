@@ -22,14 +22,14 @@ body {
   top: 10;
   left: 0;
   width: 400px;
-  background: rgba(
-    255,
-    255,
-    255,
-    0.55
-  );
+  background: rgba(255, 255, 255, 0.55);
   padding: 20px;
 
   box-sizing: border-box;
   z-index: 1;
+}
+
+.errorLabel {
+  color: red;
+  font-size: 12px;
 }

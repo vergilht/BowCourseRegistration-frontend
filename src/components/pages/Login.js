@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/login.css";
-import { users } from "./user-data";
+import { users } from "./user-data.js";
 
 export const Login = () => {
   const [user, setUser] = useState({
@@ -11,12 +11,11 @@ export const Login = () => {
   });
   let { email, password, role } = user;
 
-  /*   const users = [
-    { email: "admin@email.com", password: "password1", role: "admin" },
-    { email: "student@email.com", password: "password1", role: "student" },
-  ]; */
-
   const [send, setSend] = useState(false);
+
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -32,16 +31,41 @@ export const Login = () => {
   };
 
   const CheckEmailPW = () => {
-    const checkEmail = users.find((u) => u.email === user.email);
+    // Set initial error values to empty
+    setEmailError("");
+    setPasswordError("");
 
-    if (checkEmail && checkEmail.password === user.password) {
-      console.log("login success");
-      role = checkEmail.role;
-      GoToPageByRole(role);
-    } else {
-      console.log("login fail");
-      navigate("/");
+    // Check if the user has entered both fields correctly
+    if ("" === email) {
+      setEmailError("Please enter your email");
+      return;
     }
+
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+      setEmailError("Please enter a valid email");
+      return;
+    }
+
+    if ("" === password) {
+      setPasswordError("Please enter a password");
+      return;
+    }
+    /* -- */
+    fetch("http://localhost:5070/admin/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if ("success" === res.message) {
+          GoToPageByRole(res.role);
+        } else {
+          window.alert("Wrong email or password");
+        }
+      });
   };
 
   const GoToPageByRole = (loginUserRole) => {
@@ -78,7 +102,7 @@ export const Login = () => {
                 onChange={handleChange}
                 placeholder="Enter your email"
               />
-
+              <div className="errorLabel">{emailError}</div>
               <div>Password :</div>
               <input
                 type="text"
@@ -88,6 +112,7 @@ export const Login = () => {
                 onChange={handleChange}
                 placeholder="Enter your password"
               />
+              <div className="errorLabel">{passwordError}</div>
               <p name="message"></p>
 
               <button onClick={CheckEmailPW} type="submit">

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import { Admin } from "./pages/Admin";
-import StudentHomePage from "./pages/StudentHomePage";
-import { AddCourse, SearchCourse } from "./pages/AdminCourse";
-import { AdminStudent } from "./pages/AdminStudent";
-import { AdminForm } from "./pages/AdminForm";
-import Welcome from "./pages/Welcome";
-import { AdminLogin, StudLogin, Login } from "./pages/Login";
-import CourseSelection from "./pages/CourseSelection";
-import Contact from "./pages/Contact";
+import { Admin } from "./pages/Admin.js";
+import StudentHomePage from "./pages/StudentHomePage.js";
+import { AddCourse, SearchCourse } from "./pages/AdminCourse.js";
+import { AdminStudent } from "./pages/AdminStudent.js";
+import { AdminForm } from "./pages/AdminForm.js";
+import Welcome from "./pages/Welcome.js";
+import { AdminLogin, StudLogin, Login } from "./pages/Login.js";
+import CourseSelection from "./pages/CourseSelection.js";
+import Contact from "./pages/Contact.js";
 
 function App() {
   return (

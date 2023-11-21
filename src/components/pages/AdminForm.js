@@ -1,4 +1,4 @@
-import { AdminNavigation } from "./Navigation";
+import { AdminNavigation } from "./Navigation.js";
 
 export const AdminForm = () => {
   return (

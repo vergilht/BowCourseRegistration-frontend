@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { AdminNavigation } from "./Navigation";
 
 export const AddCourse = (props) => {
   const [course, setCourse] = useState({
