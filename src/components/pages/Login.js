@@ -2,21 +2,40 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/login.css";
 import { users } from "./user-data.js";
+import axios from "axios";
 
 export const Login = () => {
   const [user, setUser] = useState({
-    email: "",
+    username: "",
     password: "",
     role: "",
   });
-  let { email, password, role } = user;
+  let { username, password, role } = user;
 
   const [send, setSend] = useState(false);
-
-  const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [isLoggedIn, setLoggedIn] = useState(
+    localStorage.getItem("isLoggedIn") === "true"
+  );
 
   const navigate = useNavigate();
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.post("http://localhost:5070/admin/login", {
+        user,
+      });
+      console.log("res", response.data);
+
+      if ("success" === response.data.message) {
+        GoToPageByRole(response.data.role);
+      } else {
+        window.alert("Wrong username or password");
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    }
+  };
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -25,47 +44,20 @@ export const Login = () => {
   };
 
   const handleSubmit = (e) => {
+    fetchData();
     e.preventDefault();
     setSend(true);
     console.log(user);
   };
 
-  const CheckEmailPW = () => {
-    // Set initial error values to empty
-    setEmailError("");
-    setPasswordError("");
+  const handleLogin = () => {
+    setLoggedIn(true);
+    localStorage.setItem("isLoggedIn", "true");
+  };
 
-    // Check if the user has entered both fields correctly
-    if ("" === email) {
-      setEmailError("Please enter your email");
-      return;
-    }
-
-    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setEmailError("Please enter a valid email");
-      return;
-    }
-
-    if ("" === password) {
-      setPasswordError("Please enter a password");
-      return;
-    }
-    /* -- */
-    fetch("http://localhost:5070/admin/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if ("success" === res.message) {
-          GoToPageByRole(res.role);
-        } else {
-          window.alert("Wrong email or password");
-        }
-      });
+  const handleLogout = () => {
+    setLoggedIn(false);
+    localStorage.setItem("isLoggedIn", "false");
   };
 
   const GoToPageByRole = (loginUserRole) => {
@@ -97,12 +89,11 @@ export const Login = () => {
               <input
                 type="text"
                 id=""
-                value={user.email}
-                name="email"
+                value={user.username}
+                name="username"
                 onChange={handleChange}
-                placeholder="Enter your email"
+                placeholder="Enter your username"
               />
-              <div className="errorLabel">{emailError}</div>
               <div>Password :</div>
               <input
                 type="text"
@@ -112,12 +103,9 @@ export const Login = () => {
                 onChange={handleChange}
                 placeholder="Enter your password"
               />
-              <div className="errorLabel">{passwordError}</div>
               <p name="message"></p>
 
-              <button onClick={CheckEmailPW} type="submit">
-                Login
-              </button>
+              <button type="submit">Login</button>
               {window.location.href.split("/")[3] !== "admin" && (
                 <button>
                   <Link to="/student-home">Signup</Link>
