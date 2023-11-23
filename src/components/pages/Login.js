@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/login.css";
-import { users } from "./user-data.js";
 import axios from "axios";
 
 export const Login = () => {
@@ -13,7 +12,6 @@ export const Login = () => {
   let { username, password, role } = user;
 
   const [send, setSend] = useState(false);
-  const [passwordError, setPasswordError] = useState("");
   const [isLoggedIn, setLoggedIn] = useState(
     localStorage.getItem("isLoggedIn") === "true"
   );
@@ -22,9 +20,19 @@ export const Login = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.post("http://localhost:5070/admin/login", {
-        user,
-      });
+      let endpoint;
+
+      if (user.role === "admin") {
+        endpoint = "http://localhost:5070/admin/login";
+      } else if (user.role === "student") {
+        endpoint = "http://localhost:5070/student/login";
+      } else {
+        // Handle other roles or show an error
+        console.error("Unsupported user role");
+        return;
+      }
+
+      const response = await axios.post(endpoint, { user });
       console.log("res", response.data);
 
       if ("success" === response.data.message) {
@@ -75,6 +83,10 @@ export const Login = () => {
     }
   };
 
+  const SettingRole = () => {
+    user.role = window.location.href.split("/")[3];
+  };
+
   return (
     <>
       <div className="container">
@@ -105,7 +117,9 @@ export const Login = () => {
               />
               <p name="message"></p>
 
-              <button type="submit">Login</button>
+              <button onClick={SettingRole} type="submit">
+                Login
+              </button>
               {window.location.href.split("/")[3] !== "admin" && (
                 <button>
                   <Link to="/student-home">Signup</Link>
