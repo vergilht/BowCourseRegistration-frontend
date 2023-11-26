@@ -50,8 +50,8 @@ export const Login = () => {
   };
 
   const handleSubmit = (e) => {
-    fetchData();
     e.preventDefault();
+    fetchData();
     setSend(true);
     console.log(user);
   };
@@ -106,7 +106,7 @@ export const Login = () => {
               />
               <div>Password :</div>
               <input
-                type="text"
+                type="password"
                 id=""
                 value={user.password}
                 name="password"
