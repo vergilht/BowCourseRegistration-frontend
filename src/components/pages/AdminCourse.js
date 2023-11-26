@@ -1,15 +1,27 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 export const AddCourse = (props) => {
   const [course, setCourse] = useState({
     courseCode: "",
     courseName: "",
     term: "term1",
-    fee: "",
+    fees: "",
     description: "",
   });
 
   const [send, setSend] = useState(false);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:5070/admin/addcourse",
+        course
+      );
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    }
+  };
 
   const handleChange = (e) => {
     const name = e.target.name;
@@ -19,12 +31,13 @@ export const AddCourse = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.addCourse(course);
+    console.log("front : ", course);
+    fetchData();
     setCourse({
       courseCode: "",
       courseName: "",
-      term: "",
-      fee: "",
+      term: "term1",
+      fees: "",
       description: "",
     });
     setSend(true);
@@ -63,9 +76,9 @@ export const AddCourse = (props) => {
               name="term"
               onChange={handleChange}
             >
-              <option value="term1">Term1 (September 1 – December 20 )</option>
+              <option value="term1">Term1 (Sep 1 – Dec 20 )</option>
               <option value="term2">Term2 (Jan 5 – May 2)</option>
-              <option value="term3">Term3 (Sept 1 - December 20)</option>
+              <option value="term3">Term3 (Sept 1 - Dec 20)</option>
               <option value="term4">Term4 (Jan 5 – May 2)</option>
             </select>
           </div>
@@ -74,10 +87,10 @@ export const AddCourse = (props) => {
             Course Fee :
             <input
               type="text"
-              value={course.fee}
-              name="fee"
+              value={course.fees}
+              name="fees"
               onChange={handleChange}
-              placeholder="Enter the fee"
+              placeholder="Enter the fees"
             />
           </div>
           <div>
