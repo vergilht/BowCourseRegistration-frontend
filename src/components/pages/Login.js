@@ -21,7 +21,6 @@ export const Login = () => {
   const fetchData = async () => {
     try {
       let endpoint;
-
       if (user.role === "admin") {
         endpoint = "http://localhost:5070/admin/login";
       } else if (user.role === "student") {
@@ -32,10 +31,9 @@ export const Login = () => {
         return;
       }
 
-      const response = await axios.post(endpoint, { user });
-      console.log("res", response.data);
+      const response = await axios.post(endpoint, user);
 
-      if ("success" === response.data.message) {
+      if (response.data.message) {
         GoToPageByRole(response.data.role);
       } else {
         window.alert("Wrong username or password");
