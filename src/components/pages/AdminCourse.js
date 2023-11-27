@@ -78,7 +78,7 @@ export const AddCourse = (props) => {
             >
               <option value="term1">Term1 (Sep 1 – Dec 20 )</option>
               <option value="term2">Term2 (Jan 5 – May 2)</option>
-              <option value="term3">Term3 (Sept 1 - Dec 20)</option>
+              <option value="term3">Term3 (Sep 1 - Dec 20)</option>
               <option value="term4">Term4 (Jan 5 – May 2)</option>
             </select>
           </div>
@@ -131,12 +131,18 @@ export const SearchCourse = (props) => {
     e.preventDefault();
   };
 
-  const handleDeleteCourse = (courseCode) => {
-    /*     const updatedCourses = courseDB.filter(
-      (course) => course.courseCode !== courseCode
-    );
-    setCourses(updatedCourses); */
-    console.log("handleDelete");
+  const handleDeleteCourse = async (courseCode) => {
+    try {
+      await axios.delete(
+        `http://localhost:5070/admin/deletecourse/${courseCode}`
+      );
+      const deletedResult = searchResults.filter(
+        (course) => course.courseCode !== courseCode
+      );
+      setSearchResults(deletedResult);
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    }
   };
 
   return (
