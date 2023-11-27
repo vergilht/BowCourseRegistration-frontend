@@ -95,7 +95,7 @@ export const Login = () => {
           <h1>Login</h1>
           <form onSubmit={handleSubmit}>
             <div className="login-form">
-              <div>Email :</div>
+              <div>Username :</div>
               <input
                 type="text"
                 id=""
