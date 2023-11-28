@@ -1,26 +1,21 @@
 import React, { useState } from "react";
 import { AdminNavigation } from "./Navigation.js";
-import { users } from "./user-data.js";
+import axios from "axios";
 
 export const AdminStudent = () => {
-  const students = users.filter(
-    (user) => user.role.toLowerCase() === "student"
-  );
   const [searchValue, setSearchValue] = useState("");
   const [searchedStudent, setSearchedStudent] = useState([]);
 
-  const handleSearch = (selectedValue) => {
+  const handleSearch = async (selectedValue) => {
     setSearchedStudent([]);
-
-    const filteredStudents = students.filter((student) => {
-      if (selectedValue === "") {
-        return true; //
-      } else {
-        return student.program === selectedValue;
-      }
-    });
-
-    setSearchedStudent(filteredStudents);
+    try {
+      const response = await axios.get(
+        `http://localhost:5070/admin/searchstudents/${selectedValue}`
+      );
+      setSearchedStudent(response.data.results);
+    } catch (error) {
+      console.error("Error fetching data:", error.message);
+    }
   };
 
   const handleChange = (e) => {
