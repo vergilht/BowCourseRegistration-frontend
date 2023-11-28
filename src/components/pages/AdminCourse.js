@@ -169,7 +169,7 @@ export const SearchCourse = (props) => {
                   <p>Course Name: {result.courseName}</p>
                   <p>Course Term: Term{result.termID}</p>
                   <p>Course Fee: {result.fees}</p>
-                  <p>Course Description{result.description}</p>
+                  <p>Course Description: {result.description}</p>
                   <button onClick={() => handleDeleteCourse(result.courseCode)}>
                     DELETE
                   </button>
