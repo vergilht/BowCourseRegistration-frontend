@@ -24,6 +24,10 @@ export const AdminStudent = () => {
     handleSearch(selectedValue);
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-GB"); // Adjust the locale as needed
+  };
   return (
     <>
       <AdminNavigation />
@@ -37,21 +41,40 @@ export const AdminStudent = () => {
       <div>
         <h4>Search Results</h4>
         {searchedStudent.length > 0 ? (
-          <ul>
-            {searchedStudent.map((result) => (
-              <li key={result.studentID}>
-                <p>
-                  Name: {result.firstName} {result.lastName}
-                </p>
-                <p>Student ID: {result.studentID}</p>
-                <p>DOB: {result.dob}</p>
-                <p>Email: {result.email}</p>
-                <p>Phone: {result.phone}</p>
-                <p>Department: SD department</p>
-                <p>Program: {result.program}</p>
-              </li>
-            ))}
-          </ul>
+          <table
+            style={{
+              width: "100%",
+              borderSpacing: "0 15px",
+              textAlign: "center",
+            }}
+          >
+            <thead>
+              <tr>
+                <th style={{ paddingRight: "15px" }}>Name</th>
+                <th style={{ paddingRight: "15px" }}>Student ID</th>
+                <th style={{ paddingRight: "15px" }}>DOB</th>
+                <th style={{ paddingRight: "15px" }}>Email</th>
+                <th style={{ paddingRight: "15px" }}>Phone</th>
+                <th style={{ paddingRight: "15px" }}>Department</th>
+                <th>Program</th>
+              </tr>
+            </thead>
+            <tbody>
+              {searchedStudent.map((result) => (
+                <tr key={result.studentID}>
+                  <td>
+                    {result.firstName} {result.lastName}
+                  </td>
+                  <td>{result.studentID}</td>
+                  <td>{formatDate(result.dob)}</td>
+                  <td>{result.email}</td>
+                  <td>{result.phone}</td>
+                  <td>SD department</td>
+                  <td>{result.program}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         ) : (
           <p>No matching courses found.</p>
         )}
