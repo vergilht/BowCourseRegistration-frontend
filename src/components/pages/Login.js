@@ -13,28 +13,30 @@ export const Login = () => {
 
   const [send, setSend] = useState(false);
   const [isLoggedIn, setLoggedIn] = useState(
-    localStorage.getItem("isLoggedIn") === "true"
+    localStorage.getItem("isLoggedIn") === "false"
   );
+  const currentURL = window.location.href;
+  const loginPage = currentURL.split("/")[3];
 
   const navigate = useNavigate();
 
   const fetchData = async () => {
     try {
       let endpoint;
-      if (user.role === "admin") {
+
+      if (loginPage === "admin") {
         endpoint = "http://localhost:5070/admin/login";
-      } else if (user.role === "student") {
+      } else if (loginPage === "student") {
         endpoint = "http://localhost:5070/student/login";
       } else {
-        // Handle other roles or show an error
         console.error("Unsupported user role");
         return;
       }
 
       const response = await axios.post(endpoint, user);
 
-      if (response.data.message) {
-        GoToPageByRole(response.data.role);
+      if (response.status == 200) {
+        GoToPageByRole(loginPage);
       } else {
         window.alert("Wrong username or password");
       }
@@ -53,7 +55,6 @@ export const Login = () => {
     e.preventDefault();
     fetchData();
     setSend(true);
-    console.log(user);
   };
 
   const handleLogin = () => {
@@ -66,23 +67,21 @@ export const Login = () => {
     localStorage.setItem("isLoggedIn", "false");
   };
 
-  const GoToPageByRole = (loginUserRole) => {
-    const currentURL = window.location.href;
-    const loginPage = currentURL.split("/")[3];
-
-    if (loginPage == loginUserRole) {
-      if (loginUserRole == "admin") {
-        navigate("/admin");
-      } else if (loginUserRole == "student") {
-        navigate("/course-selection");
-      }
-    } else {
-      alert(`Please use ${role} login page.`);
+  const GoToPageByRole = (loginPage) => {
+    user.role = loginPage;
+    if (loginPage == "admin") {
+      localStorage.setItem("role", "admin");
+      navigate("/admin");
+    } else if (loginPage == "student") {
+      localStorage.setItem("role", "student");
+      navigate("/course-selection");
     }
   };
 
-  const SettingRole = () => {
-    user.role = window.location.href.split("/")[3];
+  const SettingLogin = () => {
+    //user.role = window.location.href.split("/")[3];
+    setLoggedIn(true);
+    localStorage.setItem("isLoggedIn", "true");
   };
 
   return (
@@ -115,7 +114,7 @@ export const Login = () => {
               />
               <p name="message"></p>
 
-              <button onClick={SettingRole} type="submit">
+              <button onClick={SettingLogin} type="submit">
                 Login
               </button>
               {window.location.href.split("/")[3] !== "admin" && (

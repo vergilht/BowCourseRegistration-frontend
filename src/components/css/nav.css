@@ -75,3 +75,9 @@ body {
   background-color: crimson;
   padding: 10px;
 }
+
+.nav_list .button2 {
+  border-radius: 20px;
+  background-color: rgb(146, 142, 143);
+  padding: 10px;
+}
