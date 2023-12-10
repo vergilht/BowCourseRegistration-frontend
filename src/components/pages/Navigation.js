@@ -38,10 +38,10 @@ export const AdminNavigation = () => {
             </div>
           </li>
           <li className="nav_list">
-            <div className="button2">
-              <button onClick={LogOut}>
-                <Link to="/">Logout</Link>
-              </button>
+            <div className="button">
+              <Link onClick={LogOut} to="/">
+                Logout
+              </Link>
             </div>
           </li>
         </ul>
