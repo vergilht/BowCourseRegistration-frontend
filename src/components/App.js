@@ -9,6 +9,7 @@ import Welcome from "./pages/Welcome.js";
 import { AdminLogin, StudLogin, Login } from "./pages/Login.js";
 import CourseSelection from "./pages/CourseSelection.js";
 import Contact from "./pages/Contact.js";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
