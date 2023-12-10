@@ -1,27 +1,30 @@
 :root {
-    --primary-color: #282c34;
-    --secondary-color: #61dafb;
     --dark-blue: #081158;
-    --plum: #ec8675;
-    --light-blue: #a0d2eb;
-    --lightest-blue: #d6e9f8;
-    --white-smoke: #eef0f4;
-    --white: #fff;
-    --black: #000;
+    --gainsboro: #dfdfdf;
+    --smoke: whitesmoke;
     --grey: #afafaf;
-    --azure: #007fff;
+    --white-smoke: #eef0f4;
+    --white: white;
+    --azure: #d2e4e0;
+    --black: black;
+    --light-blue: #5b95d2;
+    --green: #8ea5a0;
+    --lightest-blue: #cfddee;
+    --plum: #ec8675;
+    --primary: #081158;
 }
 
 body {
-    font-family: "JetBrains Mono", sans-serif;
-    background-color: var(--white-smoke);
+    color: var(--dark-blue);
+    font-family: Red Hat Display, sans-serif;
     font-size: 14px;
     line-height: 1.6em;
 }
 
 h1 {
     margin-top: 0;
-    font-family: "JetBrains Mono", sans-serif;
+    margin-bottom: 30px;
+    font-family: Sato, sans-serif;
     font-size: 72px;
     font-weight: 500;
     line-height: 1.1em;
@@ -29,7 +32,8 @@ h1 {
 
 h2 {
     margin-top: 0;
-    font-family: "JetBrains Mono", sans-serif;
+    margin-bottom: 30px;
+    font-family: Sato, sans-serif;
     font-size: 64px;
     font-weight: 500;
     line-height: 1.1em;
@@ -37,7 +41,8 @@ h2 {
 
 h3 {
     margin-top: 0;
-    font-family: "JetBrains Mono", sans-serif;
+    margin-bottom: 30px;
+    font-family: Sato, sans-serif;
     font-size: 55px;
     font-weight: 500;
     line-height: 1.1em;
@@ -45,7 +50,8 @@ h3 {
 
 h4 {
     margin-top: 0;
-    font-family: "JetBrains Mono", sans-serif;
+    margin-bottom: 30px;
+    font-family: Sato, sans-serif;
     font-size: 30px;
     font-weight: 500;
     line-height: 1.1em;
@@ -53,7 +59,8 @@ h4 {
 
 h5 {
     margin-top: 0;
-    font-family: "JetBrains Mono", sans-serif;
+    margin-bottom: 15px;
+    font-family: Sato, sans-serif;
     font-size: 25px;
     font-weight: 500;
     line-height: 1.1em;
@@ -64,15 +71,16 @@ h5 {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100px;
     height: 100px;
-    padding: 20px;
+    width: 100px;
     border-radius: 10px;
+    padding: 10px;
 }
 
 .banner {
-    padding-bottom: 20px;
-    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-top: 50px;
     color: #fff;
     width: 100%;
     height: 600px;
@@ -86,13 +94,6 @@ h5 {
     transition: 0.5s ease-in-out;
 }
 
-.container {
-    z-index: 2;
-    width: 95%;
-    max-width: 1450px;
-    position: relative;
-}
-
 .nav-menu {
     align-items: center;
     display: flex;
@@ -101,11 +102,12 @@ h5 {
     height: 100px;
     padding-top: 10px;
     padding-bottom: 10px;
+    margin-top: 150px;
 }
 
 .button {
     min-width: 200px;
-    background-color: var(--primary-color);
+    background-color: var(--primary);
     text-align: center;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -117,15 +119,13 @@ h5 {
     margin-top: 0;
     padding: 20px 20px 20px 40px;
     font-family: "JetBrains Mono", sans-serif;
-    font-weight: bold;
     line-height: 1.6em;
-    transition: padding 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-    background-position 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-    transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), color 0.2s, opacity 0.2s;
+    transition: padding .5s cubic-bezier(.23, 1, .32, 1), background-position .5s cubic-bezier(.23, 1, .32, 1), transform .5s cubic-bezier(.23, 1, .32, 1), color .2s, opacity .2s;
     display: block;
-    margin-right: 20px;
+    margin-right: 10px;
     text-decoration: none;
-    color: var(--white);
+    color: var(--white-smoke);
+    font-weight: bold;
 }
 
 .button:hover {
@@ -134,20 +134,27 @@ h5 {
     transform: translate(0, -3px);
 }
 
+/*.container {
+    z-index: 2;
+    width: 100%;
+    position: relative;
+}*/
+
 .container.flex-center {
     flex-direction: column;
     align-items: center;
     display: flex;
+    z-index: 2;
 }
 
-.section.free-w-hero {
-    background-color: var(--white-smoke);
+.free-w-hero {
+    background-color: var(--smoke);
     overflow: hidden;
 }
 
 .hero-image-mask {
     width: 100%;
-    height: 600px;
+    height: 800px;
     border-radius: 10px;
     overflow: hidden;
 }
@@ -155,12 +162,12 @@ h5 {
 .hero-image {
     width: 100%;
     height: 100%;
-    object-fit: cover
+    object-fit: cover;
 }
 
 .hero-line {
     z-index: 2;
-    width: 150vw;
+    width: 100%;
     height: 200px;
     background-color: var(--lightest-blue);
     text-align: center;
@@ -172,31 +179,32 @@ h5 {
     position: absolute;
     top: 0;
     bottom: 0;
-    transform: rotate(3deg);
+    transform: rotate(4deg);
+    object-fit: cover;
 }
 
 .hero-line.text-line {
-    background-color: var(--black);
+    background-color: var(--dark-blue);
     color: var(--white);
+    object-fit: cover;
 }
 
 .footer-contact-link {
     color: var(--white);
-    text-decoration: none;
+    font-family: Changa One, Impact, sans-serif;
     font-size: 30px;
     font-weight: 500;
     line-height: 1.6em;
-    font-family: Helvetica Neue, sans-serif;
 }
 
 .footer-link {
     color: var(--white);
-    text-decoration: none;
     margin-bottom: 5px;
+    font-family: Sato, sans-serif;
     font-size: 20px;
     font-weight: 700;
     line-height: 1.6em;
-    font-family: Helvetica Neue, sans-serif;
+    text-decoration: none;
 }
 
 .footer-brand {
@@ -206,26 +214,27 @@ h5 {
 }
 
 .container.footer-container {
-    grid-column-gap: 60px;
+    grid-column-gap: 50px;
     grid-row-gap: 100px;
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr;
     grid-auto-columns: 1fr;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     display: grid;
+
 }
 
 .section.footer-section {
     background-color: var(--dark-blue);
     color: var(--white);
-    padding-top: 100px;
-    padding-bottom: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .column {
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
+    display: flex;
     position: relative;
 }
 
@@ -246,14 +255,46 @@ h5 {
 }
 
 .text-block {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: "JetBrains Mono", sans-serif;
 }
 
-/*Setting For Students and For Admin thumbnail image*/
+.container-2 {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+}
+
+.centered-heading {
+    text-align: center;
+    font-weight: 700;
+    font-size: 60px;
+}
+
+.centered-subheading {
+    margin-bottom: 100px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 25px;
+    font-weight: 500;
+    font-family: "JetBrains Mono", sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.6em;
+    color: var(--black);
+}
+
+/* Setting For Students and For Admin */
 
 .option {
     text-align: center;
-    width: 50%; /* Adjust this width as needed */
+    width: 50%;
     display: inline-block;
     margin: 0 0 20px 0;
     position: relative;
@@ -263,21 +304,17 @@ h5 {
     width: 100%;
     height: auto;
     display: flex;
-    border: 2px solid transparent;
+    border: 3px solid transparent;
     transition: border-color 0.3s ease-in-out;
 }
 
 .option:hover img {
-    border-color: darkblue;
+    border-color: black;
 }
 
-.option h2 {
-    font-size: 24px;
-    margin-top: 10px;
-}
 
 .option p {
-    font-size: 16px;
+    font-size: 25px;
 }
 
 .option button {
