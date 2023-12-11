@@ -12,6 +12,13 @@ const [searchValue, setSearchValue] = useState([]);
 const [searchResults, setSearchResults] = useState();
 const [terms, setTerms] = useState([]);
 const [selectedTerm, setSelectedTerm] = useState(null);
+const [studentID, setStudentID] = useState(1);
+
+
+// Function to handle studentID change
+const handleStudentIDChange = (e) => {
+    setStudentID(e.target.value);
+};
 
 
 // Function to fetch term from the database
@@ -20,7 +27,7 @@ const [selectedTerm, setSelectedTerm] = useState(null);
             const response = await axios.get("`http://localhost:5070/student/coursesByTerm/${studentID}");
             setTerms(response.data.results);
         } catch (error) {
-            console.log("Terms fetched:", response.data.results);
+            console.error("Error fetching data:", error.message);
         }
     };
 
@@ -74,9 +81,7 @@ const handleCourseChange = (e) => {
     setSelectedCourses(selectedCourseObject);
 };
 
-const handleStudentIDChange = (e) => {
-    setStudentID(e.target.value);
-};
+
 
 // Function to handle course registration
 const handleRegistration = async (e) => {
