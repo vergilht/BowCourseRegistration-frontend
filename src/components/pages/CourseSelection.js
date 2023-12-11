@@ -147,26 +147,36 @@ return (
                     <Form onSubmit={handleRegistration}>
                         <Form.Group controlId="termSelection">
                             <Form.Label>Terms</Form.Label>
-                            <Form.Select onChange={handleTermChange}>
-                                {terms.map((term) => (
-                                    <option key={term.termID} value={term.termID}>
-                                        {term.termID}
-                                    </option>
-                                ))}
-                                </Form.Select>
+                                <Form.Control
+                                    as="select"
+                                    name="term"
+                                    onChange={handleTermChange}
+                                    value={selectedTerm ? selectedTerm.termID : ""}
+                                    >
+                                    <option value="">Select a term</option>
+                                    <option value="1">Fall 2023</option>
+                                    <option value="2">Winter 2024</option>
+                                    <option value="3">Spring 2024</option>
+                                    <option value="4">Summer 2024</option>
+                                </Form.Control>
                         </Form.Group>
 
                     <Form.Group controlID="courseSelection">
                         <Form.Label>Available courses:</Form.Label>
-                        <Form.Control type="text" placeholder="Search courses" onChange={(e) => setSearchValue(e.target.value.toLowerCase())} />
-                        <Form.Select onChange={handleCourseChange}>
-                            {courses.filter(course => course.courseName.toLowerCase().includes(searchValue)).map((result) => (
-                            <option key={result.courseCode} value={result.courseCode}>
-                                {result.courseName}
-                            </option>
-                        ))}
-                    </Form.Select>
-                    </Form.Group>
+                        <Form.Control
+                            as="select"
+                            name="course"
+                            onChange={handleCourseChange}
+                            value={selectedCourses ? selectedCourses.courseCode : ""}
+                        >
+                            <option value="">Select a course</option>
+                            <option value="1">Project Management1</option>
+                            <option value="2">C++ Programming Fundamentals</option>
+                            <option value="3">Computer Maintenance</option>
+                            <option value="4">Information Security1</option>
+                        </Form.Control>
+                        </Form.Group>
+
                         <Button className="bootstrap-button" variant="primary" type="submit">
                             Register
                         </Button>
