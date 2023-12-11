@@ -103,8 +103,9 @@ return (
                         </Form.Group>
                     <Form.Group controlID="courseSelection">
                         <Form.Label>Available courses:</Form.Label>
+                        <Form.Control type="text" placeholder="Search courses" onChange={(e) => serSearchValue(e.target.value.toLowerCase())} />
                         <Form.Select onChange={handleCourseChange}>
-                            {courses.map((result) => (
+                            {courses.filter(course => course.courseName.toLowerCase().includes(searchValue)).map((result) => (
                             <option key={result.courseCode} value={result.courseCode}>
                                 {result.courseName}
                             </option>
