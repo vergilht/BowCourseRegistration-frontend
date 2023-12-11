@@ -9,7 +9,8 @@ const CourseSelection = () => {
 const [courses, setCourses] = useState([]);
 const [selectedCourses, setSelectedCourses] = useState(null);
 const [studentID, setStudentID] = useState('');
-
+const [searchValue, setSearchValue] = useState([]);
+const [searchResults, setSearchResults] = useState();
 
 // Search courses from the database
     const handleSearch = async () => {
@@ -23,6 +24,7 @@ const [studentID, setStudentID] = useState('');
             console.error("Error fetching data:", error.message);
         }
     };
+
 // Fetch courses from the database
 useEffect(() => {
     const fetchCourses = async () => {
@@ -116,7 +118,7 @@ return (
                         </Form.Group>
                     <Form.Group controlID="courseSelection">
                         <Form.Label>Available courses:</Form.Label>
-                        <Form.Control type="text" placeholder="Search courses" onChange={(e) => serSearchValue(e.target.value.toLowerCase())} />
+                        <Form.Control type="text" placeholder="Search courses" onChange={(e) => setSearchValue(e.target.value.toLowerCase())} />
                         <Form.Select onChange={handleCourseChange}>
                             {courses.filter(course => course.courseName.toLowerCase().includes(searchValue)).map((result) => (
                             <option key={result.courseCode} value={result.courseCode}>
