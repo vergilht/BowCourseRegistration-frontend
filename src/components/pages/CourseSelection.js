@@ -8,9 +8,34 @@ const CourseSelection = () => {
 // Create a component for course selection
 const [courses, setCourses] = useState([]);
 const [selectedCourses, setSelectedCourses] = useState(null);
-const [studentID, setStudentID] = useState('');
 const [searchValue, setSearchValue] = useState([]);
 const [searchResults, setSearchResults] = useState();
+const [terms, setTerms] = useState([]);
+const [selectedTerm, setSelectedTerm] = useState(null);
+
+
+// Function to fetch term from the database
+    const fetchTerms = async () => {
+        try {
+            const response = await axios.get("`http://localhost:5070/student/coursesByTerm/${studentID}");
+            setTerms(response.data.results);
+        } catch (error) {
+            console.log("Terms fetched:", response.data.results);
+        }
+    };
+
+    useEffect(() => {
+        fetchTerms();
+    }, []);
+
+    // Function to handle term selection
+
+    const handleTermChange = (e) => {
+        const selectedTermID = e.target.value;
+        const selectedTermObject = terms.find(term => term.termID === selectedTermID);
+        setSelectedTerm(selectedTermObject);
+    };
+
 
 // Search courses from the database
     const handleSearch = async () => {
@@ -31,6 +56,7 @@ useEffect(() => {
         try {
             const response = await axios.get("http://localhost:5070/student/searchcourses/");
             setCourses(response.data.results);
+            console.log("Courses fetched:", response.data.results);
         } catch (err) {
             console.log("Error fetching courses:", err.message);
         }
@@ -42,7 +68,9 @@ useEffect(() => {
 // Function to handle course selection
 const handleCourseChange = (e) => {
     const selectedCourseCode = e.target.value;
+    console.log("Selected course code:", selectedCourseCode);
     const selectedCourseObject = courses.find(course => course.courseCode === selectedCourseCode);
+    console.log("Selected course object:", selectedCourseObject);
     setSelectedCourses(selectedCourseObject);
 };
 
@@ -112,10 +140,17 @@ return (
                 <Card.Header>Select a Course</Card.Header>
                 <Card.Body>
                     <Form onSubmit={handleRegistration}>
-                        <Form.Group controlId="studentID">
-                            <Form.Label>Student ID</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Student ID" onChange={handleStudentIDChange} />
+                        <Form.Group controlId="termSelection">
+                            <Form.Label>Terms</Form.Label>
+                            <Form.Select onChange={handleTermChange}>
+                                {terms.map((term) => (
+                                    <option key={term.termID} value={term.termID}>
+                                        {term.termID}
+                                    </option>
+                                ))}
+                                </Form.Select>
                         </Form.Group>
+
                     <Form.Group controlID="courseSelection">
                         <Form.Label>Available courses:</Form.Label>
                         <Form.Control type="text" placeholder="Search courses" onChange={(e) => setSearchValue(e.target.value.toLowerCase())} />
