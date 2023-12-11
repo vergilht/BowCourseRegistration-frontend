@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AdminNavigation } from "./Navigation.js";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export const AdminStudent = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -78,6 +79,49 @@ export const AdminStudent = () => {
         ) : (
           <p>No matching courses found.</p>
         )}
+      </div>
+      <div className="section footer-section">
+        <div className="container footer-container">
+          <div className="column">
+            <a className="footer-brand">
+              <img src="/BowValleylogo.png" alt="Bow Valley Logo" />
+            </a>
+          </div>
+
+          <div className="column">
+            <h4 className="label footer-label">Contact Us</h4>
+            <a
+              href="mailto:bowvalley@Group6.com"
+              className="footer-contact-link"
+            >
+              bowvalley@Group6
+            </a>
+
+            <h5 className="label footer-label">Web Programming - Group 6</h5>
+
+            <a className="text-block">Jiwon Jeon</a>
+            <a className="text-block">Vergil Phan</a>
+          </div>
+
+          <div className="column">
+            <h3 className="label footer-label">Explore</h3>
+            <Link to="/" className="footer-link">
+              Home
+            </Link>
+
+            <Link to="/student/login" className="footer-link">
+              Student Login
+            </Link>
+
+            <Link to="/admin/login" className="footer-link">
+              Admin Login
+            </Link>
+
+            <Link to="/contact" className="footer-link">
+              Contact Us
+            </Link>
+          </div>
+        </div>
       </div>
     </>
   );
