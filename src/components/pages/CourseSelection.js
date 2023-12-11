@@ -10,6 +10,19 @@ const [courses, setCourses] = useState([]);
 const [selectedCourses, setSelectedCourses] = useState(null);
 const [studentID, setStudentID] = useState('');
 
+
+// Search courses from the database
+    const handleSearch = async () => {
+        setSearchResults([]);
+        try {
+            const response = await axios.get(
+                `http://localhost:5070/student/searchcourses/${searchValue}`
+            );
+            setSearchResults(response.data.results);
+        } catch (error) {
+            console.error("Error fetching data:", error.message);
+        }
+    };
 // Fetch courses from the database
 useEffect(() => {
     const fetchCourses = async () => {
