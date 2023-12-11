@@ -82,6 +82,7 @@ export const Login = () => {
     //user.role = window.location.href.split("/")[3];
     setLoggedIn(true);
     localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("role", user.role);
   };
 
   return (
