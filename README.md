@@ -2,15 +2,17 @@
 
 Welcome to the Bow Course Registration Fullstack Web Application! This README.md will provide you with an overview of the project's directory structure and its website functionality.
 
+## Bow Course Registration Layout
+
+![Bow Course Registration Website Layout](public/BowCourseRegistration.jpeg)
+
 ## Directory Structure
 
 <pre>
 |-- src
 | |-- components
-| | |-- AdminCourse.js
-| | |-- CourseSearch.js
-| | |-- StudentSignup.js
-| | |-- user-data.js
+| | |-- App.js
+| | |-- App.css
 |-- css
 | | |-- admin.css
 | | |-- contact.css
@@ -21,6 +23,9 @@ Welcome to the Bow Course Registration Fullstack Web Application! This README.md
 | | |-- Welcome.css
 |-- pages
 | | |-- Admin.js
+| | |-- AdminCourse.js
+| | |-- AdminStudent.js
+| | |-- Navigation.js
 | | |-- Contact.js
 | | |-- Login.js
 | | |-- StudentHomePage.js
@@ -28,6 +33,7 @@ Welcome to the Bow Course Registration Fullstack Web Application! This README.md
 | | |-- CourseSelection.js
 |-- public
 | |-- index.html
+| |-- BowCourseRegistration.jpeg
 |-- README.md
 </pre>
 
@@ -37,6 +43,7 @@ Welcome to the Bow Course Registration Fullstack Web Application! This README.md
 ### Welcome Page (Welcome.js)
 - The homepage of the application.
 - Contains two buttons: "For Students" and "For Admin"
+- Contains navigation bar with links to the Student Login page and the Admin login page.
 
 ### Student Login (Login.js)
 - Functions for registered students to sign in.
@@ -46,7 +53,7 @@ Welcome to the Bow Course Registration Fullstack Web Application! This README.md
 
 ### Student Home Page (StudentHomePage.js)
 - Allows students to search for courses and sign up.
-- Consists of components: CourseSearch.js and StudentSignup.js.
+
 
 ### Admin Login (Login.js)
 - Functions for admin staff to sign in.
@@ -67,17 +74,33 @@ Welcome to the Bow Course Registration Fullstack Web Application! This README.md
 
 1. Clone this GitHub repository to your local machine.
 2. Install the necessary dependencies.
-   npm install
-3. Start the development server.
+
+```bash
+   cd backend
+   npm install init -y
+   npm install express
+   npm install mssql
+   npm install cors
+   npm install body-parser
+   npm install nodemon
+   npm install bcrypt
    npm start
-4. Access the web application in your web browser by visiting http://localhost:3000.    
+   
+   cd frontend 
+   npm install
+   npm start
+```
+3. Access the web application in your web browser by visiting http://localhost:3000.    
 
 ## Dependencies
-
+```bash
 React
 React Router
+Express
+MSSQL
+Node.js
 Other necessary packages (installed via npm install)
-
+```
 ## Contributing
 
 Feel free to contribute to this project by opening issues, proposing new features, or submitting pull requests. We welcome your feedback and collaboration to improve the Bow Course Registration Web Application.
