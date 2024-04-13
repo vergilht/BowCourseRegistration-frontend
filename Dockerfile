@@ -1,28 +1,23 @@
-# Step 1: Build the React application
-FROM node:16 as build
+# Use the official Node.js 16 image as a parent image
+FROM node:16
 
-# Set the working directory inside the container
+# Set the working directory
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json files
+# Copy package.json and package-lock.json (if available) to the working directory
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy the source code of the application
+# Bundle the source code inside the Docker image
 COPY . .
 
-# Build the application to the build folder
+# If your frontend requires a build step, include it here
 RUN npm run build
 
-# Step 2: Serve the application from Nginx
-FROM nginx:stable-alpine
+# Make port 3000 available to the world outside the container
+EXPOSE 3000
 
-# Copy the build output to replace the default nginx contents.
-COPY --from=build /usr/src/app/build /usr/share/nginx/html
-
-# Expose port 80 to the outside once the container has launched
-EXPOSE 80
-
-# No need to specify CMD because the base image already has an entrypoint set to run Nginx
+# Serve the static build folder on the specified port
+CMD [ "npm", "start" ]
